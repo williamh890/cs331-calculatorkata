@@ -3,7 +3,17 @@
 
 #include "calculator.h"
 
-int Add(const std::string &numbers)
+#include <string>
+using std::string;
+#include <sstream>
+using std::istringstream;
+
+int Add(const string &numbers)
 {
-	return 0;
+    istringstream ss(numbers);
+    int num = 0;
+
+    ss >> num;
+
+	return num;
 }
