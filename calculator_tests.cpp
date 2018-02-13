@@ -15,6 +15,12 @@ TEST_CASE("Test Add function.") {
     }
 
     SECTION("Test multiple digits.") {
+        REQUIRE(Add("1,2") == 3);
+        REQUIRE(Add("0,2") == 2);
+    }
 
+    SECTION("Test more than 2 number") {
+        REQUIRE(Add("1,2,3") == 6);
+        REQUIRE(Add("1,2,3,4") == 10);
     }
 }
