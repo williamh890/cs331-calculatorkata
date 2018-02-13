@@ -6,6 +6,6 @@
 
 #include <string>
 
-int Add(const std::string &numbers);
+int Add(std::string numbers);
 
 #endif // !CALCULATOR_H

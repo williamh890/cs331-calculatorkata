@@ -8,12 +8,21 @@ using std::string;
 #include <sstream>
 using std::istringstream;
 
-int Add(const string &numbers)
+int Add(string numbers)
 {
+    for (auto c = 0; (unsigned int)c < numbers.size(); ++c) {
+        if (numbers[c] == ',') {
+            numbers[c] = ' ';
+        }
+    }
+
+
     istringstream ss(numbers);
-    int num = 0;
 
-    ss >> num;
+    int total = 0, num = 0;
+    while(ss >> num) {
+        total += num;
+    }
 
-	return num;
+	return total;
 }
