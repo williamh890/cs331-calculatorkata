@@ -10,9 +10,9 @@ using std::istringstream;
 
 int Add(string numbers)
 {
-    for (auto c = 0; (unsigned int)c < numbers.size(); ++c) {
-        if (numbers[c] == ',') {
-            numbers[c] = ' ';
+    for (auto & c : numbers) {
+        if (c == ',') {
+            c = ' ';
         }
     }
 
