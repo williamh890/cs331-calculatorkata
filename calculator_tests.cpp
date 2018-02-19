@@ -56,4 +56,8 @@ TEST_CASE("Test add function.") {
         REQUIRE(didThrow);
         REQUIRE(msg == "negatives not allowed: -1 -2");
     }
+
+    SECTION("numbers larger than 1000 are ignored") {
+        REQUIRE(add("1001, 2") == 2);
+    }
 }
