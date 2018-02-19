@@ -54,6 +54,6 @@ TEST_CASE("Test add function.") {
         }
 
         REQUIRE(didThrow);
-        REQUIRE(msg == "-1 -2");
+        REQUIRE(msg == "negatives not allowed: -1 -2");
     }
 }

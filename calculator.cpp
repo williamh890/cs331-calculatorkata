@@ -3,6 +3,8 @@
 
 #include "calculator.h"
 
+#include <vector>
+using std::vector;
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -10,6 +12,9 @@ using std::endl;
 using std::string;
 #include <sstream>
 using std::istringstream;
+using std::ostringstream;
+#include <exception>
+using std::runtime_error;
 
 static char getDelimiterFrom(const string & numbers) {
     if (numbers.size() > 3 && numbers[0] == '/' && numbers[1] == '/') {
@@ -17,6 +22,17 @@ static char getDelimiterFrom(const string & numbers) {
     }
 
     return ',';
+}
+
+static string getErrorMsg(const vector<int> & negatives) {
+    ostringstream os;
+
+    os << "negatives not allowed:";
+    for (auto & n : negatives) {
+        os << " " << n;
+    }
+
+    return os.str();
 }
 
 int add(string numbers)
@@ -33,12 +49,21 @@ int add(string numbers)
         }
     }
 
-
     istringstream ss(numbers);
+
+    vector<int> negatives;
 
     int total = 0, num = 0;
     while(ss >> num) {
+        if (num < 0) {
+            negatives.push_back(num);
+        }
+
         total += num;
+    }
+
+    if (negatives.size() > 0) {
+        throw runtime_error(getErrorMsg(negatives));
     }
 
 	return total;
