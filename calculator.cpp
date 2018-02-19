@@ -8,11 +8,15 @@ using std::string;
 #include <sstream>
 using std::istringstream;
 
-int Add(string numbers)
+int add(string numbers)
 {
-    for (auto & c : numbers) {
-        if (c == ',') {
-            c = ' ';
+    for (auto i = 0; i < numbers.size(); ++i) {
+        if (numbers[i] == ',') {
+            if (numbers[i + 1] > numbers.size() and numbers[i + 1] == '\n') {
+                return -1;
+            }
+
+            numbers[i] = ' ';
         }
     }
 
