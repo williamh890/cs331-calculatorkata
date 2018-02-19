@@ -62,6 +62,15 @@ TEST_CASE("Test add function.") {
     }
 
     SECTION("delimiters of more than one character work") {
-        REQUIRE(add("[***]\n1***2***3") == 6);
+        REQUIRE(add("//[***]\n1***2***3") == 6);
     }
+
+    SECTION("multiple one char delimiters") {
+        REQUIRE(add("//[*][%]\n1*2%3") == 6);
+    }
+
+    SECTION("multiple multi char delimiters") {
+        REQUIRE(add("//[***][^%]\n1***2^%3") == 6);
+    }
+
 }
