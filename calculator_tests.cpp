@@ -3,6 +3,11 @@
 #include "catch.hpp"
 #include "calculator.h"
 
+#include <string>
+using std::string;
+#include <exception>
+using std::runtime_error;
+
 TEST_CASE("Test add function.") {
 
 	SECTION("Test empty string.") {
@@ -35,5 +40,20 @@ TEST_CASE("Test add function.") {
 
     SECTION("allow custom delimiters") {
         REQUIRE(add("//;\n1;2"));
+    }
+
+    SECTION("negative numbers throw error msg") {
+        bool didThrow = false;
+        string msg = "";
+
+        try {
+            add("-1,-2");
+        } catch(runtime_error & e) {
+            didThrow = true;
+            msg = e.what();
+        }
+
+        REQUIRE(didThrow);
+        REQUIRE(msg == "-1 -2");
     }
 }
