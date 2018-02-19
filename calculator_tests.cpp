@@ -32,4 +32,8 @@ TEST_CASE("Test add function.") {
     SECTION("make sure unmatch delimiter on same line fails.") {
         REQUIRE(add("1,\n") == -1);
     }
+
+    SECTION("allow custom delimiters") {
+        REQUIRE(add("//;\n1;2"));
+    }
 }
