@@ -60,4 +60,8 @@ TEST_CASE("Test add function.") {
     SECTION("numbers larger than 1000 are ignored") {
         REQUIRE(add("1001, 2") == 2);
     }
+
+    SECTION("delimiters of more than one character work") {
+        REQUIRE(add("[***]\n1***2***3") == 6);
+    }
 }
