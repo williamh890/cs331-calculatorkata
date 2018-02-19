@@ -58,6 +58,9 @@ int add(string numbers)
         if (num < 0) {
             negatives.push_back(num);
         }
+        if (num >= 1000) {
+            continue;
+        }
 
         total += num;
     }
