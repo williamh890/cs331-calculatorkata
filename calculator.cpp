@@ -39,14 +39,16 @@ int add(string numbers)
 {
     auto delimiter = getDelimiterFrom(numbers);
 
-    for (auto i = 0; i < numbers.size(); ++i) {
-        if (numbers[i] == delimiter) {
-            if (numbers[i + 1] > numbers.size() and numbers[i + 1] == '\n') {
-                return -1;
-            }
-
-            numbers[i] = ' ';
+    for (size_t i = 0; i < numbers.size(); ++i) {
+        if (isdigit(numbers[i]) or numbers[i] == '-') {
+            continue;
         }
+
+        if (numbers[i + 1] > numbers.size() and numbers[i + 1] == '\n') {
+            return -1;
+        }
+
+        numbers[i] = ' ';
     }
 
     istringstream ss(numbers);
